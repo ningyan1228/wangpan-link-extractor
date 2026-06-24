@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>网盘链接提取器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>网盘链接提取器</h1>
+          <p>百度网盘、夸克网盘分享文本清洗</p>
+        </div>
+        <div class="status" id="statusText">等待输入</div>
+      </header>
+
+      <section class="workspace" aria-label="链接提取工作区">
+        <div class="pane">
+          <div class="pane-head">
+            <label for="sourceText">原始分享文本</label>
+            <div class="actions">
+              <button type="button" id="sampleBtn">示例</button>
+              <button type="button" id="clearBtn">清空</button>
+            </div>
+          </div>
+          <textarea
+            id="sourceText"
+            spellcheck="false"
+            placeholder="粘贴百度网盘或夸克网盘分享内容..."
+          ></textarea>
+        </div>
+
+        <aside class="control-rail" aria-label="提取选项">
+          <button type="button" class="primary" id="extractBtn">提取</button>
+          <label class="switch">
+            <input type="checkbox" id="dedupeInput" checked />
+            <span>去重链接</span>
+          </label>
+          <label class="switch">
+            <input type="checkbox" id="keepPwdInput" checked />
+            <span>保留提取码</span>
+          </label>
+          <div class="metrics" aria-live="polite">
+            <div><strong id="totalCount">0</strong><span>总链接</span></div>
+            <div><strong id="quarkCount">0</strong><span>夸克</span></div>
+            <div><strong id="baiduCount">0</strong><span>百度</span></div>
+          </div>
+        </aside>
+
+        <div class="pane">
+          <div class="pane-head">
+            <label for="resultText">提取结果</label>
+            <div class="actions">
+              <button type="button" id="copyBtn">复制</button>
+              <button type="button" id="downloadBtn">下载TXT</button>
+            </div>
+          </div>
+          <textarea
+            id="resultText"
+            spellcheck="false"
+            readonly
+            placeholder="提取后的内容会出现在这里..."
+          ></textarea>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
